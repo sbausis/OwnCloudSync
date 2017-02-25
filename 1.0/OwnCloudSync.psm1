@@ -25,7 +25,7 @@ function OwnCloudSync($Server, $User, $Password, $RemoteFolder, $LocalFolder) {
 	Try {
 		#If (![System.IO.File]::Exists($File)) { Write-Warning "Local Folder does not exist ... $LocalFolder"; throw }
 		If(!(Test-Path -Path $LocalFolder )){ New-Item -Force -ItemType directory -Path $LocalFolder }
-		$OwnCloudCMD=$PSScriptRoot + "\owncloud\owncloudcmd.exe"
+		$OwnCloudCMD=$PSScriptRoot + "\OwnCloud\owncloudcmd.exe"
 		$ServerURL = $Server + "/remote.php/webdav/" + $RemoteFolder
 		cmd.exe /C $OwnCloudCMD --user $User --password $Password --trust --non-interactive $LocalFolder $ServerURL
 	} Catch {
